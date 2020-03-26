@@ -154,14 +154,11 @@ private static boolean isSquareMatrix(File matrixFile){
 
     public static void main(String[] args) throws IOException , FileNotFoundException,NumberFormatException , Exception{
        
-           /*
+           
     if (args.length != 5) {
             System.out.println("Wrong argument format,"
             + "should be <radix> <blocksize> <keyfile> <plainfile> <cipherfile>.");
-    } else {*/
-        File key = new File("encoded.txt");
-        keytomatrix(key);
-        /*
+    } else {
         setBlockSize(args[0]);
             setRadix(args[1]);
         //File key = new File(args[2]);
@@ -173,7 +170,7 @@ private static boolean isSquareMatrix(File matrixFile){
         ArrayList<Integer> x = new ArrayList<>();
              x = multmatrix(keytomatrix(key),plaintoarray(text),"26","3");
                usingBufferedWritter(x,args[4]);
-        }*/
-    //}
+        }
+    }
 }
 }
