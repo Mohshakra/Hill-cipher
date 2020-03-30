@@ -28,13 +28,12 @@ public class HillCipher {
     };
     return plain_num;
 };
-    public static void usingBufferedWritter(ArrayList<Integer>msg  , String x) throws IOException
+    public static void usingBufferedWritter(ArrayList<Integer>msg  , String file) throws IOException
     {              
-        File file = new File("/Users/mohamedshakra/Desktop/Security/" + x);
+
         FileWriter writer = new FileWriter(file); 
         int i = 0;
         try{
-            file.createNewFile();
             while(i < msg.size()){   
                 writer.write(msg.get(i).toString());
                 writer.write(" ");
@@ -159,18 +158,21 @@ private static boolean isSquareMatrix(File matrixFile){
             System.out.println("Wrong argument format,"
             + "should be <radix> <blocksize> <keyfile> <plainfile> <cipherfile>.");
     } else {
-        setBlockSize(args[0]);
-            setRadix(args[1]);
-        //File key = new File(args[2]);
+        
+        setRadix(args[0]);
+        setBlockSize(args[1]);
+            
+        File key = new File(args[2]);
         File text = new File(args[3]);
-        if(!key.isFile()){System.out.println("key is not a file!");}
-        else if(!isSquareMatrix(key)){ System.out.println("KeyFile is not a squarematrix");}
-        else if(!text.isFile()){System.out.println("plaintext is not a file!");}
+        if(!key.isFile()){System.out.println(key + " is not a file!");}
+        else if(!isSquareMatrix(key)){ System.out.println(key + " is not a squarematrix");}
+        else if(!text.isFile()){System.out.println(text+" is not a file!");}
         else{  
         ArrayList<Integer> x = new ArrayList<>();
              x = multmatrix(keytomatrix(key),plaintoarray(text),"26","3");
                usingBufferedWritter(x,args[4]);
         }
-    }
+    
+}
 }
 }
